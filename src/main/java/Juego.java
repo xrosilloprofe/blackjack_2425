@@ -53,16 +53,35 @@ public class Juego {
         }
     }
 
-    private void juegaBanca(Jugador player){
+    private void juegaBanca(Jugador playerBanca){
         int maxPuntuacion=maxPuntuacionJugadores();
-        System.out.println("Turno para " + player.getNombre());
-        System.out.println(player);
-        while(player.obtenerPuntuacion()<maxPuntuacion){
-            player.anyadirCarta(baraja.repartirEncima());
-            System.out.println(player);
-            if(player.obtenerPuntuacion()<0)
-                System.out.println(player.getNombre() + " te has pasado !!");
+        System.out.println("Turno para " + playerBanca.getNombre());
+        System.out.println(playerBanca);
+        while(playerBanca.obtenerPuntuacion()<maxPuntuacion && playerBanca.obtenerPuntuacion()>=0){
+            esperar(2000);
+            playerBanca.anyadirCarta(baraja.repartirEncima());
+            System.out.println(playerBanca);
+            if(playerBanca.obtenerPuntuacion()<0)
+                System.out.println("La banca se ha pasado !!");
         }
+    }
+
+    private void esperar(long millis){
+        try{
+            Thread.sleep(millis);
+        } catch (Exception e){
+
+        }
+    }
+
+    private int maxPuntuacionJugadores(){
+        int mayor = Integer.MIN_VALUE;
+        for(Jugador jugador:jugadores){
+            if(jugador.obtenerPuntuacion()>mayor){
+                mayor = jugador.obtenerPuntuacion();
+            }
+        }
+        return mayor;
     }
 
 }
