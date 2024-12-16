@@ -7,12 +7,14 @@ public class Jugador {
     private LocalDate fechaNacimiento;
     private Carta[] mano;
 
-    //
+    //Constructor
     public Jugador(String nombre, LocalDate fechaNacimiento){
         mano = new Carta[0];
         this.fechaNacimiento = fechaNacimiento;
         this.nombre = nombre;
     }
+
+    public String getNombre(){return nombre;}
 
     public void anyadirCarta(Carta carta){
         mano = Arrays.copyOf(mano,mano.length+1);
