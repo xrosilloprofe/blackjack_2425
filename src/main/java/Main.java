@@ -1,6 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-        Baraja baraja = new Baraja();
-        System.out.println(baraja);
+        //Jugadores máximo 6
+        int numJugadores = 0;
+        while(numJugadores<1 || numJugadores>6){
+            numJugadores = Input.getInteger("¿Cuántos jugadores?");
+        }
+
+        Juego juego = new Juego();
     }
 }

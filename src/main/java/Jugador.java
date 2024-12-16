@@ -22,12 +22,20 @@ public class Jugador {
     public int obtenerPuntuacion(){
         //contar a partir de las cartas de la mano y devolver la puntuación
         int puntos=0;
-
+        for(Carta carta:mano){
+            puntos += carta.getNumero().getPuntuacion();
+        }
+//        if(puntos>21)
+//            return -1;
+//        return puntos;
+        return (puntos>21)?-1:puntos;
     }
 
     @Override
     public String toString(){
-        //devolver nombre + mano
+        //devolver nombre + puntuación + mano
+        return "Jugador: "  + nombre + " puntuación: " + obtenerPuntuacion() +
+                " mano: " + Arrays.toString(mano);
     }
 
 }
