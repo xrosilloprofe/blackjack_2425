@@ -25,7 +25,7 @@ public class Juego {
         }
         juegaBanca(banca);
 
-        //mostrarGanador();
+        mostrarGanador();
     }
 
     private void repartoInicial(Jugador player){
@@ -82,6 +82,18 @@ public class Juego {
             }
         }
         return mayor;
+    }
+
+    private void mostrarGanador(){
+        int maxPuntuacion = maxPuntuacionJugadores();
+        if(banca.obtenerPuntuacion() == maxPuntuacion){
+            System.out.println("La banca gana");
+        } else {
+            for(Jugador jugador:jugadores){
+                if (jugador.obtenerPuntuacion()==maxPuntuacion)
+                    System.out.println("Jugador " + jugador.getNombre() + " ha ganado");
+            }
+        }
     }
 
 }
